@@ -23,7 +23,7 @@ class LifxServer {
         it.hardwareAddress?.toUByteArray()?.let { MacAddress(it) }
     }
 
-    suspend fun sendCommand(command: LifxCommand) = withContext(Dispatchers.IO) {
+    suspend fun sendCommand(command: LifxCommand, target: InetAddress = InetAddress.getByName("255.255.255.255")) = withContext(Dispatchers.IO) {
         val source = Random.nextUInt()
         val bytes = when(command) {
             is LifxCommand.GetService -> {
@@ -49,15 +49,19 @@ class LifxServer {
             is SetColour -> {
                 command.serialise()
             }
+
+            is GetColour -> {
+                command.serialise()
+            }
         }
 
         println("Sending ${bytes.toHexString()}")
 
-        val packet = DatagramPacket(bytes, bytes.size, InetAddress.getByName("255.255.255.255"), 56700)
+        val packet = DatagramPacket(bytes, bytes.size, target, 56700)
         udpListeningSocket.send(packet)
     }
 
-    suspend fun start(): Flow<LifxEvent> = flow {
+    fun start(): Flow<LifxEvent> = flow {
         val receiveData = ByteArray(1024)
 
         println("Mac Addresses $macAddresses")
@@ -79,18 +83,22 @@ class LifxServer {
         val header = buffer.decodeLifxHeader()
         println("Received $header from ${address}:${port}")
 
-        return when(header.type.toUInt()) {
-            3u -> LifxEvent.StateService.decodeFromBuffer(buffer)
-            45u -> LifxEvent.Acknowledgement
-            107u -> LifxEvent.LightState.decodeFromBuffer(buffer)
+        val received = when(header.type.toUInt()) {
+            3u -> LifxEvent.StateService.decodeFromBuffer(address, buffer)
+            45u -> LifxEvent.Acknowledgement(address)
+            107u -> LifxEvent.LightState.decodeFromBuffer(address, buffer)
             else -> null
         }
+
+        println(received)
+        return received
     }
 }
 
 fun ByteBuffer.skip(num: Int) = position(position() + num)
-fun ByteBuffer.readFixedLengthString(size: Int): String {
+fun ByteBuffer.readNullTerminatedStringWithMaxLength(size: Int): String {
     val destArray = ByteArray(size)
     get(destArray, 0, size)
-    return String(destArray)
+    val stringEnd = destArray.indexOfFirst { it == 0.toByte() }
+    return String(destArray, 0, stringEnd)
 }
