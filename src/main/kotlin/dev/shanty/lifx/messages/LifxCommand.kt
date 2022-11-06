@@ -17,6 +17,30 @@ interface LifxSerializable {
     fun serialise(): ByteArray
 }
 
+object GetColour : LifxCommand, LifxSerializable {
+    override fun serialise(): ByteArray {
+        val size = LifxHeader.SIZE_BYTES.toInt()
+        val buffer = ByteBuffer.allocate(size).order(ByteOrder.LITTLE_ENDIAN)
+        val header = LifxHeader(
+            size = size.toUShort(),
+            protocol = 1024u,
+            addressable = true,
+            tagged = false,
+            origin = 0u,
+            source = 0u,
+            target = MacAddress.ZERO,
+            resRequired = false,
+            ackRequired = false,
+            sequence = 0u,
+            type = 101u
+        )
+
+        header.encodeToByteBuffer(buffer)
+        return buffer.array()
+    }
+
+}
+
 data class SetColour(
     val colour: HsbkColour,
     val duration: UInt,
