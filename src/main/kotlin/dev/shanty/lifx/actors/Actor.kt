@@ -19,7 +19,7 @@ interface Actor<TIN, TOUT> : CoroutineScope {
 }
 
 class ActorImpl <TIN, TOUT>(context: CoroutineContext) : Actor<TIN, TOUT>, CoroutineScope by CoroutineScope(context) {
-    private val inbox = Channel<TIN>(onBufferOverflow = BufferOverflow.SUSPEND)
+    val inbox = Channel<TIN>(onBufferOverflow = BufferOverflow.SUSPEND)
     private val _outbox = Channel<TOUT>(onBufferOverflow = BufferOverflow.SUSPEND)
     override val outbox = _outbox.receiveAsFlow().shareIn(this, SharingStarted.Eagerly, 0)
 
@@ -44,13 +44,15 @@ class ActorBuilder<TIN, TOUT> {
     }
 }
 
-fun <TIN, TOUT> CoroutineScope.actor(context: CoroutineContext = EmptyCoroutineContext, init: ActorFactory<TIN, TOUT>): Actor<TIN, TOUT> {
+private fun <TIN, TOUT> actorImpl(context: CoroutineContext = EmptyCoroutineContext, init: ActorFactory<TIN, TOUT>): ActorImpl<TIN, TOUT> {
     val actor = ActorImpl<TIN, TOUT>(context)
     val actorBuilder = ActorBuilder<TIN, TOUT>()
     actorBuilder.init(actor)
 
     actor.launch {
-        actorBuilder.onStart(actor)
+        launch {
+            actorBuilder.onStart(actor)
+        }
 
         actor.inbox.receiveAsFlow().collect {
             actorBuilder.processInbox(actor, it)
@@ -59,8 +61,13 @@ fun <TIN, TOUT> CoroutineScope.actor(context: CoroutineContext = EmptyCoroutineC
     return actor
 }
 
-fun <TIN, TOUT> CoroutineScope.actor(context: CoroutineContext = EmptyCoroutineContext, incomingFlow: Flow<TIN>, init: ActorFactory<TIN, TOUT>): Actor<TIN, TOUT> {
-    val actor = actor(context, init)
+
+fun <TIN, TOUT> actor(context: CoroutineContext = EmptyCoroutineContext, init: ActorFactory<TIN, TOUT>): Actor<TIN, TOUT> {
+    return actorImpl(context, init)
+}
+
+fun <TIN, TOUT> actor(context: CoroutineContext = EmptyCoroutineContext, incomingFlow: Flow<TIN>, init: ActorFactory<TIN, TOUT>): Actor<TIN, TOUT> {
+    val actor = actorImpl(context, init)
     actor.launch {
         incomingFlow.collectToChannel(actor.inbox)
     }

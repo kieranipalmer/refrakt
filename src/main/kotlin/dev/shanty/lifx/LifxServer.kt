@@ -55,16 +55,12 @@ class LifxServer {
             }
         }
 
-        println("Sending ${bytes.toHexString()}")
-
         val packet = DatagramPacket(bytes, bytes.size, target, 56700)
         udpListeningSocket.send(packet)
     }
 
     fun start(): Flow<LifxEvent> = flow {
         val receiveData = ByteArray(1024)
-
-        println("Mac Addresses $macAddresses")
 
         while(true) {
             val recievedPacket = DatagramPacket(receiveData, receiveData.size)
@@ -81,7 +77,7 @@ class LifxServer {
             .order(ByteOrder.LITTLE_ENDIAN)
 
         val header = buffer.decodeLifxHeader()
-        println("Received $header from ${address}:${port}")
+//        println("Received $header from ${address}:${port}")
 
         val received = when(header.type.toUInt()) {
             3u -> LifxEvent.StateService.decodeFromBuffer(address, buffer)
@@ -90,7 +86,6 @@ class LifxServer {
             else -> null
         }
 
-        println(received)
         return received
     }
 }

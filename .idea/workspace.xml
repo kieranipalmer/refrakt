@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e82d3351-d025-4026-a41a-fa66f14fad47" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/actors/Actor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/Lifx.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/Lifx.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/LifxServer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/LifxServer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/MacAddress.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/MacAddress.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/messages/LifxCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/messages/LifxCommand.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/messages/LifxEvent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/messages/LifxEvent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/actors/Actor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/actors/Actor.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,13 +163,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/Lifx.kt</url>
-          <line>92</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/LifxServer.kt</url>
-          <line>102</line>
-          <option name="timeStamp" value="14" />
+          <line>38</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
