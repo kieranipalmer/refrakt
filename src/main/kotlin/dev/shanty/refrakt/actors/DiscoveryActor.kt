@@ -1,6 +1,6 @@
 package dev.shanty.refrakt.actors
 
-import dev.shanty.refrakt.messages.LifxCommand
+import dev.shanty.refrakt.messages.GetService
 import dev.shanty.refrakt.messages.LifxEvent
 import dev.shanty.refrakt.utils.timeoutAfter
 import kotlinx.coroutines.delay
@@ -27,7 +27,7 @@ internal fun ActorManager.startLifxDiscoveryActor(
     process {
         println("Running Discovery")
 
-        networkActor.sendTo(NetworkCommandEnvelope(payload = LifxCommand.GetService))
+        networkActor.sendTo(NetworkCommandEnvelope(payload = GetService))
         val discoveryResponses = networkActor.outbox.mapNotNull {
             it as? LifxEvent.StateService
         }.timeoutAfter(discoveryTime).toList()

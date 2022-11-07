@@ -1,12 +1,8 @@
 package dev.shanty.refrakt
 
-import dev.shanty.refrakt.messages.GetColour
 import dev.shanty.refrakt.messages.LifxCommand
 import dev.shanty.refrakt.messages.LifxEvent
-import dev.shanty.refrakt.messages.LifxHeader
-import dev.shanty.refrakt.messages.SetColour
 import dev.shanty.refrakt.messages.decodeLifxHeader
-import dev.shanty.refrakt.messages.encodeToByteBuffer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -18,8 +14,6 @@ import java.net.InetAddress
 import java.net.NetworkInterface
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
-import kotlin.random.Random
-import kotlin.random.nextUInt
 
 class LifxServer {
 
@@ -30,37 +24,7 @@ class LifxServer {
     }
 
     suspend fun sendCommand(command: LifxCommand, target: InetAddress = InetAddress.getByName("255.255.255.255")) = withContext(Dispatchers.IO) {
-        val source = Random.nextUInt()
-        val bytes = when (command) {
-            is LifxCommand.GetService -> {
-                val header = LifxHeader(
-                    size = LifxHeader.SIZE_BYTES,
-                    protocol = 1024u,
-                    addressable = true,
-                    tagged = false,
-                    origin = 0u,
-                    source = source,
-                    target = MacAddress.ZERO,
-                    resRequired = true,
-                    ackRequired = false,
-                    sequence = 0u,
-                    type = 2u,
-                )
-
-                val buffer = ByteBuffer.allocate(header.size.toInt()).order(ByteOrder.LITTLE_ENDIAN)
-                header.encodeToByteBuffer(buffer)
-                buffer.array()
-            }
-
-            is SetColour -> {
-                command.serialise()
-            }
-
-            is GetColour -> {
-                command.serialise()
-            }
-        }
-
+        val bytes = command.serialise()
         val packet = DatagramPacket(bytes, bytes.size, target, 56700)
         udpListeningSocket.send(packet)
     }
