@@ -19,7 +19,6 @@ fun main() = runBlocking {
                     println(it)
                 }
             }
-
         }.collect()
     }
 }

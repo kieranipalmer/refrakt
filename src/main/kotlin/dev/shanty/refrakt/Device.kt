@@ -7,7 +7,6 @@ import dev.shanty.refrakt.models.HsbkColour
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.withTimeout
 import java.time.Instant
 import kotlin.time.Duration
 
@@ -40,7 +39,7 @@ sealed interface Device {
          */
         suspend fun setColour(colour: HsbkColour, duration: Duration, waitForResponse: Boolean = false) {
             actor.sendTo(LightActorInput.Command.SetColour(colour, duration))
-            if(waitForResponse) {
+            if (waitForResponse) {
                 actor.outbox.first { it.colour == colour }
             }
         }
@@ -55,7 +54,7 @@ sealed interface Device {
          */
         suspend fun setPower(power: Boolean, waitForResponse: Boolean = false) {
             actor.sendTo(LightActorInput.Command.SetPower(power))
-            if(waitForResponse) {
+            if (waitForResponse) {
                 actor.outbox.first { it.power == power }
             }
         }

@@ -55,7 +55,7 @@ class LifxServer {
             .order(ByteOrder.LITTLE_ENDIAN)
 
         val header = buffer.decodeLifxHeader()
-        logger.debug("Received $header from ${address}:${port}")
+        logger.debug("Received $header from $address:$port")
 
         val received = when (header.type.toUInt()) {
             3u -> LifxEvent.StateService.decodeFromBuffer(address, buffer)
