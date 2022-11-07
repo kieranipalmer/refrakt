@@ -8,7 +8,7 @@ internal fun ActorManager.startDeviceManagerActor(
 ) = actor(discoveryActor.outbox) {
 
     process {
-        val newActor = startDeviceActor(it.source, networkActor)
+        val newActor = startLightActor(it.source, networkActor)
         emit(newActor)
     }
 }
