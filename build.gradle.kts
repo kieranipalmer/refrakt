@@ -40,8 +40,8 @@ publishing {
         register<MavenPublication>("gpr") {
             artifactId = "refrakt"
 
-            if (!project.hasProperty("buildRelease")) {
-                version += "-SNAPSHOT"
+            if (!project.hasProperty("buildRelease") && !version.endsWith("SNAPSHOT")) {
+                throw Exception("Pre-release versions should end with SNAPSHOT")
             }
 
             pom {
