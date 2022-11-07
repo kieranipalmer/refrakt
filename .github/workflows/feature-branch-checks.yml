@@ -25,6 +25,6 @@ jobs:
           arguments: dokkaGfm
       - name: Copy Docs
         run: |
-          mkdir docs
-          cp -r build/dokka/gfm/* docs
+          mkdir -p docs/api
+          cp -r build/dokka/gfm/* docs/api
       - uses: stefanzweifel/git-auto-commit-action@v4
