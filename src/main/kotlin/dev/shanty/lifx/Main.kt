@@ -9,8 +9,7 @@ import kotlinx.coroutines.withContext
 
 fun main() = runBlocking {
     withContext(Dispatchers.Default) {
-        val actorManager = ActorManager(this)
-        val lifx = Lifx(actorManager)
+        val lifx = Lifx(this)
         lifx.discoveryEvents.onEach {
             val light = (it as Device.Light)
             println("Discovered Light ${light.label}")
