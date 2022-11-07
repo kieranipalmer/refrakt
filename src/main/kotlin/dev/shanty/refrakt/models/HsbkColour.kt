@@ -1,4 +1,4 @@
-package dev.shanty.lifx.models
+package dev.shanty.refrakt.models
 
 data class HsbkColour(
     val hue: UShort,

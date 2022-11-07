@@ -1,4 +1,4 @@
-package dev.shanty.lifx
+package dev.shanty.refrakt
 
 import java.util.HexFormat
 

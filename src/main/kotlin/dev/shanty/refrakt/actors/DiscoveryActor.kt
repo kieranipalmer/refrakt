@@ -1,8 +1,8 @@
-package dev.shanty.lifx.actors
+package dev.shanty.refrakt.actors
 
-import dev.shanty.lifx.messages.LifxCommand
-import dev.shanty.lifx.messages.LifxEvent
-import dev.shanty.lifx.utils.timeoutAfter
+import dev.shanty.refrakt.messages.LifxCommand
+import dev.shanty.refrakt.messages.LifxEvent
+import dev.shanty.refrakt.utils.timeoutAfter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.flow.toList

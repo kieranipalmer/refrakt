@@ -1,6 +1,6 @@
-package dev.shanty.lifx.actors
+package dev.shanty.refrakt.actors
 
-import dev.shanty.lifx.messages.LifxEvent
+import dev.shanty.refrakt.messages.LifxEvent
 
 internal fun ActorManager.startDeviceManagerActor(
     discoveryActor: Actor<*, LifxEvent.StateService>,

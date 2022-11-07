@@ -1,7 +1,7 @@
-package dev.shanty.lifx.messages
+package dev.shanty.refrakt.messages
 
-import dev.shanty.lifx.MacAddress
-import dev.shanty.lifx.skip
+import dev.shanty.refrakt.MacAddress
+import dev.shanty.refrakt.skip
 import java.nio.ByteBuffer
 
 data class LifxHeader(

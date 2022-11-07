@@ -1,9 +1,9 @@
-package dev.shanty.lifx
+package dev.shanty.refrakt
 
-import dev.shanty.lifx.actors.Actor
-import dev.shanty.lifx.actors.DeviceActorInput
-import dev.shanty.lifx.actors.LightActorState
-import dev.shanty.lifx.models.HsbkColour
+import dev.shanty.refrakt.actors.Actor
+import dev.shanty.refrakt.actors.DeviceActorInput
+import dev.shanty.refrakt.actors.LightActorState
+import dev.shanty.refrakt.models.HsbkColour
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import java.time.Instant
