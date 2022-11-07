@@ -1,7 +1,7 @@
-package dev.shanty.lifx.messages
+package dev.shanty.refrakt.messages
 
-import dev.shanty.lifx.readNullTerminatedStringWithMaxLength
-import dev.shanty.lifx.skip
+import dev.shanty.refrakt.readNullTerminatedStringWithMaxLength
+import dev.shanty.refrakt.skip
 import java.net.InetAddress
 import java.nio.ByteBuffer
 

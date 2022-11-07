@@ -1,2 +1,2 @@
 
-rootProject.name = "lifx"
+rootProject.name = "refrakt"

@@ -1,9 +1,9 @@
-package dev.shanty.lifx.actors
+package dev.shanty.refrakt.actors
 
-import dev.shanty.lifx.messages.GetColour
-import dev.shanty.lifx.messages.LifxEvent
-import dev.shanty.lifx.messages.SetColour
-import dev.shanty.lifx.models.HsbkColour
+import dev.shanty.refrakt.messages.GetColour
+import dev.shanty.refrakt.messages.LifxEvent
+import dev.shanty.refrakt.messages.SetColour
+import dev.shanty.refrakt.models.HsbkColour
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map

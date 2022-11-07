@@ -1,4 +1,4 @@
-package dev.shanty.lifx
+package dev.shanty.refrakt
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect

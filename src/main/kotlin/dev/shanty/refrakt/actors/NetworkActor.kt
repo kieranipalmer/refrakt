@@ -1,8 +1,8 @@
-package dev.shanty.lifx.actors
+package dev.shanty.refrakt.actors
 
-import dev.shanty.lifx.LifxServer
-import dev.shanty.lifx.messages.LifxCommand
-import dev.shanty.lifx.messages.LifxEvent
+import dev.shanty.refrakt.LifxServer
+import dev.shanty.refrakt.messages.LifxCommand
+import dev.shanty.refrakt.messages.LifxEvent
 import java.net.InetAddress
 
 internal fun ActorManager.startLifxNetworkActor() = actor<NetworkCommandEnvelope, LifxEvent> {

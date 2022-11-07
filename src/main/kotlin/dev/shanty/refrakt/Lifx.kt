@@ -1,9 +1,9 @@
-package dev.shanty.lifx
+package dev.shanty.refrakt
 
-import dev.shanty.lifx.actors.ActorManager
-import dev.shanty.lifx.actors.startDeviceManagerActor
-import dev.shanty.lifx.actors.startLifxDiscoveryActor
-import dev.shanty.lifx.actors.startLifxNetworkActor
+import dev.shanty.refrakt.actors.ActorManager
+import dev.shanty.refrakt.actors.startDeviceManagerActor
+import dev.shanty.refrakt.actors.startLifxDiscoveryActor
+import dev.shanty.refrakt.actors.startLifxNetworkActor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

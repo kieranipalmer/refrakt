@@ -1,4 +1,4 @@
-package dev.shanty.lifx.actors
+package dev.shanty.refrakt.actors
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
