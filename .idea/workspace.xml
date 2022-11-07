@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e82d3351-d025-4026-a41a-fa66f14fad47" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/Lifx.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/Lifx.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/LifxServer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/LifxServer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/MacAddress.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/MacAddress.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/actors/Actor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/actors/Actor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/messages/LifxCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/messages/LifxCommand.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/messages/LifxEvent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/messages/LifxEvent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/messages/LifxHeader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/messages/LifxHeader.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/models/HsbkColour.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/models/HsbkColour.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +55,12 @@
                 <item name="lifx" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="documentation" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="lifx" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="formatting" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -141,7 +136,7 @@
       <recent name="dev.shanty.lifx.messages" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.lifx [ktlintApplyToIdeaGlobally]">
+  <component name="RunManager" selected="Kotlin.MainKt">
     <configuration name="lifx [ktlintApplyToIdeaGlobally]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -154,6 +149,27 @@
         <option name="taskNames">
           <list>
             <option value="ktlintApplyToIdeaGlobally" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="lifx [ktlintFormat]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="ktlintFormat" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -193,8 +209,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.lifx [ktlintApplyToIdeaGlobally]" />
         <item itemvalue="Kotlin.MainKt" />
+        <item itemvalue="Gradle.lifx [ktlintFormat]" />
+        <item itemvalue="Gradle.lifx [ktlintApplyToIdeaGlobally]" />
         <item itemvalue="Gradle.lifx-lan-kt [clean]" />
       </list>
     </recent_temporary>
@@ -226,7 +243,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/src/main/kotlin/dev/shanty/lifx/Lifx.kt</url>
-          <line>42</line>
+          <line>47</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
