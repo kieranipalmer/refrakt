@@ -2,7 +2,7 @@ package dev.shanty.refrakt.messages
 
 import dev.shanty.refrakt.MacAddress
 import dev.shanty.refrakt.models.HsbkColour
-import dev.shanty.refrakt.skip
+import dev.shanty.refrakt.utils.skip
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 

@@ -19,3 +19,12 @@ jobs:
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           arguments: ktlintCheck
+      - name: Generate Docs
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+        with:
+          arguments: dokkaGfm
+      - name: Copy Docs
+        run: |
+          mkdir -p docs/api
+          cp -r build/dokka/gfm/* docs/api
+      - uses: stefanzweifel/git-auto-commit-action@v4

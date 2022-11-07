@@ -1,0 +1,12 @@
+//[refrakt](../../../../index.md)/[dev.shanty.refrakt](../../index.md)/[LifxServer](../index.md)/[Companion](index.md)
+
+# Companion
+
+[jvm]\
+object [Companion](index.md)
+
+## Properties
+
+| Name | Summary |
+|---|---|
+| [logger](logger.md) | [jvm]<br>val [logger](logger.md): KLogger |

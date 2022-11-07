@@ -14,12 +14,12 @@ import java.net.InetAddress
 import java.time.Instant
 import kotlin.time.Duration
 
-internal fun ActorManager.startDeviceActor(
-    deviceIp: InetAddress,
+internal fun ActorManager.startLightActor(
+    lightIp: InetAddress,
     networkActor: Actor<NetworkCommandEnvelope, LifxEvent>
-) = uniqueActor<DeviceActorInput, LightActorState>(
-    deviceIp.toString(),
-    networkActor.outbox.filter { it.source == deviceIp }.map { DeviceActorInput.Event(it) }
+) = uniqueActor<LightActorInput, LightActorState>(
+    lightIp.toString(),
+    networkActor.outbox.filter { it.source == lightIp }.map { LightActorInput.Event(it) }
 ) {
 
     var state = LightActorState(
@@ -30,10 +30,10 @@ internal fun ActorManager.startDeviceActor(
     )
 
     onStart {
-        println("Starting actor for device $deviceIp")
+        println("Starting actor for device $lightIp")
         launch {
             while (isActive) {
-                networkActor.sendTo(NetworkCommandEnvelope(target = deviceIp, payload = GetColour))
+                networkActor.sendTo(NetworkCommandEnvelope(target = lightIp, payload = GetColour))
                 delay(5000)
             }
         }
@@ -59,27 +59,27 @@ internal fun ActorManager.startDeviceActor(
         }
     }
 
-    suspend fun processCommand(command: DeviceActorInput.Command) = when (command) {
-        is DeviceActorInput.Command.SetColour -> networkActor.sendTo(
-            NetworkCommandEnvelope(deviceIp, SetColour(command.colour, command.duration.inWholeMilliseconds.toUInt()))
+    suspend fun processCommand(command: LightActorInput.Command) = when (command) {
+        is LightActorInput.Command.SetColour -> networkActor.sendTo(
+            NetworkCommandEnvelope(lightIp, SetColour(command.colour, command.duration.inWholeMilliseconds.toUInt()))
         )
 
-        is DeviceActorInput.Command.SetPower -> networkActor.sendTo(
-            NetworkCommandEnvelope(deviceIp, SetPower(command.power))
+        is LightActorInput.Command.SetPower -> networkActor.sendTo(
+            NetworkCommandEnvelope(lightIp, SetPower(command.power))
         )
     }
 
     process { input ->
         when (input) {
-            is DeviceActorInput.Event -> processEvent(input.event)
-            is DeviceActorInput.Command -> processCommand(input)
+            is LightActorInput.Event -> processEvent(input.event)
+            is LightActorInput.Command -> processCommand(input)
         }
     }
 }
 
-sealed interface DeviceActorInput {
-    data class Event(val event: LifxEvent) : DeviceActorInput
-    sealed interface Command : DeviceActorInput {
+sealed interface LightActorInput {
+    data class Event(val event: LifxEvent) : LightActorInput
+    sealed interface Command : LightActorInput {
         data class SetColour(val colour: HsbkColour, val duration: Duration) : Command
         data class SetPower(val power: Boolean) : Command
     }

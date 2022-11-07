@@ -1,7 +1,7 @@
 package dev.shanty.refrakt.messages
 
-import dev.shanty.refrakt.readNullTerminatedStringWithMaxLength
-import dev.shanty.refrakt.skip
+import dev.shanty.refrakt.utils.readNullTerminatedStringWithMaxLength
+import dev.shanty.refrakt.utils.skip
 import java.net.InetAddress
 import java.nio.ByteBuffer
 
