@@ -7,7 +7,6 @@ plugins {
 }
 
 group = "dev.shanty"
-version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -40,6 +39,10 @@ publishing {
     publications {
         register<MavenPublication>("gpr") {
             artifactId = "refrakt"
+
+            if (!project.hasProperty("buildRelease")) {
+                version += "-SNAPSHOT"
+            }
 
             pom {
                 name.set("Refrakt")

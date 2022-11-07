@@ -1,6 +1,8 @@
 name: Feature Branch Checks
 
-on: [release]
+on:
+  release:
+    types: [published]
 
 jobs:
   build:
@@ -18,4 +20,9 @@ jobs:
       - name: Release
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
-          arguments: publish
+          arguments: |
+            publish 
+            -Pversion=${{ github.event.release.tag_name }} 
+            -PbuildRelease=${{ github.event.release.prerelease }} 
+            -Pgpr.user=${{ github.event.release.user.login }}
+            -Pgpr.key=${{ secrets.GITHUB_TOKEN }}
