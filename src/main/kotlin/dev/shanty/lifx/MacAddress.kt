@@ -1,6 +1,6 @@
 package dev.shanty.lifx
 
-import java.util.*
+import java.util.HexFormat
 
 @JvmInline
 value class MacAddress(val bytes: UByteArray) {
@@ -19,7 +19,7 @@ fun Byte.toHex(): String = "%2x".format(this)
 fun UByteArray.toHexString(): String = toByteArray().toHexString()
 
 fun ByteArray.toHexString(delimiter: String? = null): String = this.let {
-    if(delimiter == null) {
+    if (delimiter == null) {
         HexFormat.of().formatHex(it)
     } else {
         HexFormat.ofDelimiter(delimiter).formatHex(it)

@@ -13,5 +13,4 @@ data class HsbkColour(
         (brightness.toDouble() * 65535).toUInt().toUShort(),
         (kelvin.toDouble() * 7500 + 1500).toUInt().toUShort(),
     )
-
 }

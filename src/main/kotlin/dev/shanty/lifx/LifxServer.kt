@@ -1,6 +1,5 @@
 package dev.shanty.lifx
 
-import dev.shanty.lifx.messages.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -25,7 +24,7 @@ class LifxServer {
 
     suspend fun sendCommand(command: LifxCommand, target: InetAddress = InetAddress.getByName("255.255.255.255")) = withContext(Dispatchers.IO) {
         val source = Random.nextUInt()
-        val bytes = when(command) {
+        val bytes = when (command) {
             is LifxCommand.GetService -> {
                 val header = LifxHeader(
                     size = LifxHeader.SIZE_BYTES,
@@ -62,11 +61,11 @@ class LifxServer {
     fun start(): Flow<LifxEvent> = flow {
         val receiveData = ByteArray(1024)
 
-        while(true) {
+        while (true) {
             val recievedPacket = DatagramPacket(receiveData, receiveData.size)
             udpListeningSocket.receive(recievedPacket)
             val event = recievedPacket.decodeLifxMessage()
-            if(event != null) {
+            if (event != null) {
                 emit(event)
             }
         }
@@ -79,7 +78,7 @@ class LifxServer {
         val header = buffer.decodeLifxHeader()
 //        println("Received $header from ${address}:${port}")
 
-        val received = when(header.type.toUInt()) {
+        val received = when (header.type.toUInt()) {
             3u -> LifxEvent.StateService.decodeFromBuffer(address, buffer)
             45u -> LifxEvent.Acknowledgement(address)
             107u -> LifxEvent.LightState.decodeFromBuffer(address, buffer)

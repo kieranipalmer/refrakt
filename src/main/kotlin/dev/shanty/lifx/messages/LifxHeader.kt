@@ -30,9 +30,9 @@ fun ByteBuffer.decodeLifxHeader(): LifxHeader {
     val protocolBottom = (otherByte and 0b00001111u).toUInt()
     val protocol = ((protocolBottom shl 8) or protocolTop).toUShort()
 
-    val addressable = (otherByte and 0b00010000u ) > 0u
-    val tagged = (otherByte and 0b00100000u ) > 0u
-    val origin = ((otherByte and 0b11000000u ).toUInt() shr 7).toUByte()
+    val addressable = (otherByte and 0b00010000u) > 0u
+    val tagged = (otherByte and 0b00100000u) > 0u
+    val origin = ((otherByte and 0b11000000u).toUInt() shr 7).toUByte()
     val source = int.toUInt()
 
     val target = ByteArray(8)
@@ -69,12 +69,12 @@ fun ByteBuffer.decodeLifxHeader(): LifxHeader {
 fun LifxHeader.encodeToByteBuffer(buffer: ByteBuffer) {
     buffer.putShort(size.toShort())
 
-    val protocolUpper = (protocol.toUInt() and 0xFFu).toUByte() //10000000001
+    val protocolUpper = (protocol.toUInt() and 0xFFu).toUByte() // 10000000001
     buffer.put(protocolUpper.toByte())
 
     val protocolLower = (protocol.toUInt() shr 8) and 0xFFu
-    val addressableFlagByte = (if(addressable) 1u else 0u) shl 4
-    val taggedFlagByte = (if(tagged) 1u else 0u) shl 5
+    val addressableFlagByte = (if (addressable) 1u else 0u) shl 4
+    val taggedFlagByte = (if (tagged) 1u else 0u) shl 5
     val origin = (origin.toUInt() and 0b11u) shl 7
 
     val lowerByte = protocolLower or addressableFlagByte or taggedFlagByte or origin
@@ -84,8 +84,8 @@ fun LifxHeader.encodeToByteBuffer(buffer: ByteBuffer) {
     buffer.put(target.bytes.toByteArray())
     buffer.skip(6)
 
-    val resRequiredByte = (if(resRequired) 1u else 0u)
-    val ackRequiredByte = (if(ackRequired) 1u else 0u) shl 1
+    val resRequiredByte = (if (resRequired) 1u else 0u)
+    val ackRequiredByte = (if (ackRequired) 1u else 0u) shl 1
     val byte22 = resRequiredByte or ackRequiredByte
     buffer.put(byte22.toByte())
 

@@ -12,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
 interface Actor<TIN, TOUT> : CoroutineScope {
-    val outbox : Flow<TOUT>
+    val outbox: Flow<TOUT>
 
     suspend fun sendTo(it: TIN)
     suspend fun emit(it: TOUT)
@@ -60,7 +60,6 @@ private fun <TIN, TOUT> actorImpl(context: CoroutineContext = EmptyCoroutineCont
     }
     return actor
 }
-
 
 fun <TIN, TOUT> actor(context: CoroutineContext = EmptyCoroutineContext, init: ActorFactory<TIN, TOUT>): Actor<TIN, TOUT> {
     return actorImpl(context, init)

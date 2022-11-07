@@ -1,19 +1,27 @@
 package dev.shanty.lifx
 
 import dev.shanty.lifx.actors.Actor
-import dev.shanty.lifx.actors.ActorBuilder
 import dev.shanty.lifx.actors.ActorFactory
 import dev.shanty.lifx.actors.actor
-import dev.shanty.lifx.actors.collectToChannel
 import dev.shanty.lifx.messages.GetColour
 import dev.shanty.lifx.messages.LifxCommand
 import dev.shanty.lifx.messages.LifxEvent
 import dev.shanty.lifx.messages.SetColour
 import dev.shanty.lifx.models.HsbkColour
-import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.actor
-import kotlinx.coroutines.channels.ticker
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.mapNotNull
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeoutOrNull
 import java.net.InetAddress
 import java.time.Instant
 import kotlin.coroutines.CoroutineContext
@@ -31,7 +39,7 @@ class ActorManager(parentScope: CoroutineScope) {
         } as Actor<TIN, TOUT>
     }
 
-    fun <TIN, TOUT> uniqueActor(key: String, inFlow: Flow<TIN>, init: ActorFactory<TIN, TOUT>) : Actor<TIN, TOUT> {
+    fun <TIN, TOUT> uniqueActor(key: String, inFlow: Flow<TIN>, init: ActorFactory<TIN, TOUT>): Actor<TIN, TOUT> {
         val found = knownActors.getOrPut(key) {
             actor<TIN, TOUT>(inFlow, init)
         }
@@ -70,7 +78,7 @@ private fun ActorManager.startLifxDiscoveryActor(
 
     onStart {
         launch {
-            while(isActive) {
+            while (isActive) {
                 sendTo(Unit)
                 delay(30000)
             }
@@ -115,7 +123,6 @@ sealed interface DeviceActorInput {
     sealed interface Command : DeviceActorInput {
         data class SetColour(val colour: HsbkColour, val duration: Duration) : Command
     }
-
 }
 
 private fun ActorManager.startDeviceActor(
@@ -136,7 +143,7 @@ private fun ActorManager.startDeviceActor(
     onStart {
         println("Starting actor for device $deviceIp")
         launch {
-            while(isActive) {
+            while (isActive) {
                 networkActor.sendTo(CommandEnvelope(target = deviceIp, payload = GetColour))
                 delay(5000)
             }
@@ -145,7 +152,7 @@ private fun ActorManager.startDeviceActor(
 
     suspend fun processEvent(event: LifxEvent) {
         val currentState = state
-        when(event) {
+        when (event) {
             is LifxEvent.Acknowledgement -> {}
             is LifxEvent.LightState -> {
                 state = state.copy(
@@ -157,33 +164,33 @@ private fun ActorManager.startDeviceActor(
             is LifxEvent.StateService -> {}
         }
 
-        if(state != currentState) {
+        if (state != currentState) {
             state = state.copy(updatedAt = Instant.now())
             it.emit(state)
         }
     }
 
-    suspend fun processCommand(command: DeviceActorInput.Command) = when(command) {
+    suspend fun processCommand(command: DeviceActorInput.Command) = when (command) {
         is DeviceActorInput.Command.SetColour -> networkActor.sendTo(
             CommandEnvelope(deviceIp, SetColour(command.colour, command.duration.inWholeMilliseconds.toUInt()))
         )
     }
 
     process { input ->
-        when(input) {
+        when (input) {
             is DeviceActorInput.Event -> processEvent(input.event)
             is DeviceActorInput.Command -> processCommand(input)
         }
     }
 }
 
-//Facade around Lifx Actor
+// Facade around Lifx Actor
 class Lifx(actorManager: ActorManager) {
     private val lifxNetworkActor = actorManager.startLifxNetworkActor()
     private val lifxDiscoveryActor = actorManager.startLifxDiscoveryActor(5000, lifxNetworkActor)
     private val deviceDiscoveryActor = actorManager.startDeviceManagerActor(lifxDiscoveryActor, lifxNetworkActor)
 
-    val discoveryEvents : Flow<Device> = deviceDiscoveryActor.outbox.map {
+    val discoveryEvents: Flow<Device> = deviceDiscoveryActor.outbox.map {
         Device.Light(it)
     }
 }
@@ -193,7 +200,8 @@ sealed interface Device {
         private val actor: Actor<DeviceActorInput, LightActorState>,
     ) : Device {
 
-        val stateEvents = actor.outbox.stateIn(actor, SharingStarted.Eagerly,
+        val stateEvents = actor.outbox.stateIn(
+            actor, SharingStarted.Eagerly,
             LightActorState(
                 HsbkColour(0u, 0u, 0u, 0u),
                 false,
@@ -207,9 +215,7 @@ sealed interface Device {
         suspend fun setColour(colour: HsbkColour, duration: Duration) {
             actor.sendTo(DeviceActorInput.Command.SetColour(colour, duration))
         }
-
     }
-
 }
 
 data class LightActorState(

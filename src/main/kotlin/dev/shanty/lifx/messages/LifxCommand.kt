@@ -5,12 +5,10 @@ import dev.shanty.lifx.models.HsbkColour
 import dev.shanty.lifx.skip
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
-import javax.crypto.Mac
 
 sealed interface LifxCommand {
 
     object GetService : LifxCommand
-
 }
 
 interface LifxSerializable {
@@ -38,7 +36,6 @@ object GetColour : LifxCommand, LifxSerializable {
         header.encodeToByteBuffer(buffer)
         return buffer.array()
     }
-
 }
 
 data class SetColour(
@@ -75,5 +72,4 @@ data class SetColour(
 
         return buffer.array()
     }
-
 }
