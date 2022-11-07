@@ -3,6 +3,7 @@ package dev.shanty.refrakt.actors
 import dev.shanty.refrakt.messages.GetColour
 import dev.shanty.refrakt.messages.LifxEvent
 import dev.shanty.refrakt.messages.SetColour
+import dev.shanty.refrakt.messages.SetPower
 import dev.shanty.refrakt.models.HsbkColour
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.filter
@@ -62,6 +63,10 @@ internal fun ActorManager.startDeviceActor(
         is DeviceActorInput.Command.SetColour -> networkActor.sendTo(
             NetworkCommandEnvelope(deviceIp, SetColour(command.colour, command.duration.inWholeMilliseconds.toUInt()))
         )
+
+        is DeviceActorInput.Command.SetPower -> networkActor.sendTo(
+            NetworkCommandEnvelope(deviceIp, SetPower(command.power))
+        )
     }
 
     process { input ->
@@ -76,6 +81,7 @@ sealed interface DeviceActorInput {
     data class Event(val event: LifxEvent) : DeviceActorInput
     sealed interface Command : DeviceActorInput {
         data class SetColour(val colour: HsbkColour, val duration: Duration) : Command
+        data class SetPower(val power: Boolean) : Command
     }
 }
 

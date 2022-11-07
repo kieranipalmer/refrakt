@@ -29,5 +29,9 @@ sealed interface Device {
         suspend fun setColour(colour: HsbkColour, duration: Duration) {
             actor.sendTo(DeviceActorInput.Command.SetColour(colour, duration))
         }
+
+        suspend fun setPower(power: Boolean) {
+            actor.sendTo(DeviceActorInput.Command.SetPower(power))
+        }
     }
 }
