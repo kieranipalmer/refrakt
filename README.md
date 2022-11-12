@@ -24,7 +24,7 @@ To begin communicating with Lifx Devices, you must instantiate an instance of [L
 This class requires a Coroutine Scope.
 An example can be seen below:
 ```kotlin
-    fun main() = runBlocking {
+    fun main() = runLocalActorSystem {
         val lifx = Lifx(this)
     }
 ```
