@@ -10,6 +10,14 @@ plugins {
 group = "dev.shanty"
 
 repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/kieranipalmer/akt")
+        credentials {
+            username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_USER")
+            password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
+        }
+    }
+
     mavenCentral()
 }
 
@@ -21,7 +29,8 @@ java {
 dependencies {
     implementation("com.igormaznitsa:jbbp:2.0.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    implementation("io.github.microutils:kotlin-logging:3.0.3")
+    implementation("io.github.microutils:kotlin-logging:3.0.4")
+    implementation("dev.shanty:akt:0.0.2")
     testImplementation(kotlin("test"))
 }
 
@@ -31,8 +40,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/kieranipalmer/refrakt")
             credentials {
-                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_USER")
+                password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
             }
         }
     }

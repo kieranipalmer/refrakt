@@ -1,30 +1,24 @@
 package dev.shanty.refrakt.actors
 
+import dev.shanty.akt.actor.Actor
+import dev.shanty.akt.actor.actor
 import dev.shanty.refrakt.messages.GetService
 import dev.shanty.refrakt.messages.LifxEvent
 import dev.shanty.refrakt.utils.timeoutAfter
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
-internal fun ActorManager.startLifxDiscoveryActor(
+internal fun CoroutineScope.startLifxDiscoveryActor(
     discoveryTime: Long,
     networkActor: Actor<NetworkCommandEnvelope, LifxEvent>
-) = actor {
+): Actor<Unit, LifxEvent.StateService> {
+
     val knownDevices = mutableSetOf<LifxEvent.StateService>()
-
-    onStart {
-        launch {
-            while (isActive) {
-                sendTo(Unit)
-                delay(30000)
-            }
-        }
-    }
-
-    process {
+    val actor = actor<Unit, LifxEvent.StateService> {
         println("Running Discovery")
 
         networkActor.sendTo(NetworkCommandEnvelope(payload = GetService))
@@ -43,4 +37,13 @@ internal fun ActorManager.startLifxDiscoveryActor(
             emit(it)
         }
     }
+
+    actor.launch {
+        while (isActive) {
+            actor.sendTo(Unit)
+            delay(30000)
+        }
+    }
+
+    return actor
 }
