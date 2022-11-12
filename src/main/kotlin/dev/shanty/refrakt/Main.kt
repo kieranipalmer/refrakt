@@ -1,12 +1,9 @@
 package dev.shanty.refrakt
 
 import dev.shanty.akt.runLocalActorSystem
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 
 fun main() = runLocalActorSystem {
 
@@ -22,6 +19,4 @@ fun main() = runLocalActorSystem {
             }
         }
     }.collect()
-
 }
-

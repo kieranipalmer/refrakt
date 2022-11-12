@@ -26,4 +26,3 @@ internal fun CoroutineScope.startDeviceManagerActor(
 
     return actor
 }
-

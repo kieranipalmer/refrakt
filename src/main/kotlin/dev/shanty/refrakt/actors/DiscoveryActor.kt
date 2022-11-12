@@ -36,7 +36,6 @@ internal fun CoroutineScope.startLifxDiscoveryActor(
             knownDevices.add(it)
             emit(it)
         }
-
     }
 
     actor.launch {

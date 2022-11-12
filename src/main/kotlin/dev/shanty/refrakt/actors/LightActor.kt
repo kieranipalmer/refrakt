@@ -70,7 +70,6 @@ internal fun CoroutineScope.startLightActor(
             is LightActorInput.Event -> processEvent(it.event)
             is LightActorInput.Command -> processCommand(it)
         }
-
     }
 
     println("Starting actor for device $lightIp")
