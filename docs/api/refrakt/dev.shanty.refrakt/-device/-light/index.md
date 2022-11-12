@@ -3,13 +3,13 @@
 # Light
 
 [jvm]\
-class [Light](index.md)(actor: [Actor](../../../dev.shanty.refrakt.actors/-actor/index.md)&lt;[LightActorInput](../../../dev.shanty.refrakt.actors/-light-actor-input/index.md), [LightActorState](../../../dev.shanty.refrakt.actors/-light-actor-state/index.md)&gt;) : [Device](../index.md)
+class [Light](index.md)(actor: Actor&lt;[LightActorInput](../../../dev.shanty.refrakt.actors/-light-actor-input/index.md), [LightActorState](../../../dev.shanty.refrakt.actors/-light-actor-state/index.md)&gt;) : [Device](../index.md)
 
 ## Constructors
 
 | | |
 |---|---|
-| [Light](-light.md) | [jvm]<br>fun [Light](-light.md)(actor: [Actor](../../../dev.shanty.refrakt.actors/-actor/index.md)&lt;[LightActorInput](../../../dev.shanty.refrakt.actors/-light-actor-input/index.md), [LightActorState](../../../dev.shanty.refrakt.actors/-light-actor-state/index.md)&gt;) |
+| [Light](-light.md) | [jvm]<br>fun [Light](-light.md)(actor: Actor&lt;[LightActorInput](../../../dev.shanty.refrakt.actors/-light-actor-input/index.md), [LightActorState](../../../dev.shanty.refrakt.actors/-light-actor-state/index.md)&gt;) |
 
 ## Functions
 

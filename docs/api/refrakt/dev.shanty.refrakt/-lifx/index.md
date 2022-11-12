@@ -3,7 +3,7 @@
 # Lifx
 
 [jvm]\
-class [Lifx](index.md)
+class [Lifx](index.md)(scope: CoroutineScope)
 
 ## Constructors
 

@@ -7,7 +7,7 @@
 | Name | Summary |
 |---|---|
 | [Device](-device/index.md) | [jvm]<br>interface [Device](-device/index.md) |
-| [Lifx](-lifx/index.md) | [jvm]<br>class [Lifx](-lifx/index.md) |
+| [Lifx](-lifx/index.md) | [jvm]<br>class [Lifx](-lifx/index.md)(scope: CoroutineScope) |
 | [LifxServer](-lifx-server/index.md) | [jvm]<br>class [LifxServer](-lifx-server/index.md) |
 | [MacAddress](-mac-address/index.md) | [jvm]<br>@[JvmInline](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-inline/index.html)<br>value class [MacAddress](-mac-address/index.md)(val bytes: [UByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-u-byte-array/index.html)) |
 

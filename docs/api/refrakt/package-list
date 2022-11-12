@@ -1,31 +1,6 @@
 $dokka.format:gfm-v1
 $dokka.linkExtension:md
 $dokka.location:dev.shanty.refrakt.actors////PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/index.md
-$dokka.location:dev.shanty.refrakt.actors//actor/#kotlin.coroutines.CoroutineContext#kotlin.Function2[dev.shanty.refrakt.actors.ActorBuilder[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],dev.shanty.refrakt.actors.Actor[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],kotlin.Unit]/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/actor.md
-$dokka.location:dev.shanty.refrakt.actors//actor/#kotlin.coroutines.CoroutineContext#kotlinx.coroutines.flow.Flow[TypeParam(bounds=[kotlin.Any?])]#kotlin.Function2[dev.shanty.refrakt.actors.ActorBuilder[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],dev.shanty.refrakt.actors.Actor[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],kotlin.Unit]/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/actor.md
-$dokka.location:dev.shanty.refrakt.actors//collectToChannel/kotlinx.coroutines.flow.Flow[TypeParam(bounds=[kotlin.Any?])]#kotlinx.coroutines.channels.Channel[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/collect-to-channel.md
-$dokka.location:dev.shanty.refrakt.actors/Actor///PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor/index.md
-$dokka.location:dev.shanty.refrakt.actors/Actor/emit/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor/emit.md
-$dokka.location:dev.shanty.refrakt.actors/Actor/outbox/#/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor/outbox.md
-$dokka.location:dev.shanty.refrakt.actors/Actor/sendTo/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor/send-to.md
-$dokka.location:dev.shanty.refrakt.actors/ActorBuilder///PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-builder/index.md
-$dokka.location:dev.shanty.refrakt.actors/ActorBuilder/ActorBuilder/#/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-builder/-actor-builder.md
-$dokka.location:dev.shanty.refrakt.actors/ActorBuilder/onStart/#/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-builder/on-start.md
-$dokka.location:dev.shanty.refrakt.actors/ActorBuilder/onStart/#kotlin.coroutines.SuspendFunction1[dev.shanty.refrakt.actors.Actor[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],kotlin.Unit]/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-builder/on-start.md
-$dokka.location:dev.shanty.refrakt.actors/ActorBuilder/process/#kotlin.coroutines.SuspendFunction2[dev.shanty.refrakt.actors.Actor[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],TypeParam(bounds=[kotlin.Any?]),kotlin.Unit]/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-builder/process.md
-$dokka.location:dev.shanty.refrakt.actors/ActorBuilder/processInbox/#/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-builder/process-inbox.md
-$dokka.location:dev.shanty.refrakt.actors/ActorImpl///PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-impl/index.md
-$dokka.location:dev.shanty.refrakt.actors/ActorImpl/ActorImpl/#kotlin.coroutines.CoroutineContext/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-impl/-actor-impl.md
-$dokka.location:dev.shanty.refrakt.actors/ActorImpl/emit/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-impl/emit.md
-$dokka.location:dev.shanty.refrakt.actors/ActorImpl/inbox/#/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-impl/inbox.md
-$dokka.location:dev.shanty.refrakt.actors/ActorImpl/outbox/#/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-impl/outbox.md
-$dokka.location:dev.shanty.refrakt.actors/ActorImpl/sendTo/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-impl/send-to.md
-$dokka.location:dev.shanty.refrakt.actors/ActorManager///PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-manager/index.md
-$dokka.location:dev.shanty.refrakt.actors/ActorManager/ActorManager/#kotlinx.coroutines.CoroutineScope/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-manager/-actor-manager.md
-$dokka.location:dev.shanty.refrakt.actors/ActorManager/actor/#kotlin.Function2[dev.shanty.refrakt.actors.ActorBuilder[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],dev.shanty.refrakt.actors.Actor[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],kotlin.Unit]/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-manager/actor.md
-$dokka.location:dev.shanty.refrakt.actors/ActorManager/actor/#kotlinx.coroutines.flow.Flow[TypeParam(bounds=[kotlin.Any?])]#kotlin.Function2[dev.shanty.refrakt.actors.ActorBuilder[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],dev.shanty.refrakt.actors.Actor[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],kotlin.Unit]/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-manager/actor.md
-$dokka.location:dev.shanty.refrakt.actors/ActorManager/uniqueActor/#kotlin.String#kotlin.Function2[dev.shanty.refrakt.actors.ActorBuilder[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],dev.shanty.refrakt.actors.Actor[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],kotlin.Unit]/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-manager/unique-actor.md
-$dokka.location:dev.shanty.refrakt.actors/ActorManager/uniqueActor/#kotlin.String#kotlinx.coroutines.flow.Flow[TypeParam(bounds=[kotlin.Any?])]#kotlin.Function2[dev.shanty.refrakt.actors.ActorBuilder[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],dev.shanty.refrakt.actors.Actor[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],kotlin.Unit]/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-actor-manager/unique-actor.md
 $dokka.location:dev.shanty.refrakt.actors/LightActorInput.Command.SetColour///PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-light-actor-input/-command/-set-colour/index.md
 $dokka.location:dev.shanty.refrakt.actors/LightActorInput.Command.SetColour/SetColour/#dev.shanty.refrakt.models.HsbkColour#kotlin.time.Duration/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-light-actor-input/-command/-set-colour/-set-colour.md
 $dokka.location:dev.shanty.refrakt.actors/LightActorInput.Command.SetColour/colour/#/PointingToDeclaration/refrakt/dev.shanty.refrakt.actors/-light-actor-input/-command/-set-colour/colour.md
@@ -126,7 +101,7 @@ $dokka.location:dev.shanty.refrakt//toHex/kotlin.UByte#/PointingToDeclaration/r
 $dokka.location:dev.shanty.refrakt//toHexString/kotlin.ByteArray#kotlin.String?/PointingToDeclaration/refrakt/dev.shanty.refrakt/to-hex-string.md
 $dokka.location:dev.shanty.refrakt//toHexString/kotlin.UByteArray#/PointingToDeclaration/refrakt/dev.shanty.refrakt/to-hex-string.md
 $dokka.location:dev.shanty.refrakt/Device.Light///PointingToDeclaration/refrakt/dev.shanty.refrakt/-device/-light/index.md
-$dokka.location:dev.shanty.refrakt/Device.Light/Light/#dev.shanty.refrakt.actors.Actor[dev.shanty.refrakt.actors.LightActorInput,dev.shanty.refrakt.actors.LightActorState]/PointingToDeclaration/refrakt/dev.shanty.refrakt/-device/-light/-light.md
+$dokka.location:dev.shanty.refrakt/Device.Light/Light/#dev.shanty.akt.actor.Actor[dev.shanty.refrakt.actors.LightActorInput,dev.shanty.refrakt.actors.LightActorState]/PointingToDeclaration/refrakt/dev.shanty.refrakt/-device/-light/-light.md
 $dokka.location:dev.shanty.refrakt/Device.Light/label/#/PointingToDeclaration/refrakt/dev.shanty.refrakt/-device/-light/label.md
 $dokka.location:dev.shanty.refrakt/Device.Light/setColour/#dev.shanty.refrakt.models.HsbkColour#kotlin.time.Duration#kotlin.Boolean/PointingToDeclaration/refrakt/dev.shanty.refrakt/-device/-light/set-colour.md
 $dokka.location:dev.shanty.refrakt/Device.Light/setPower/#kotlin.Boolean#kotlin.Boolean/PointingToDeclaration/refrakt/dev.shanty.refrakt/-device/-light/set-power.md

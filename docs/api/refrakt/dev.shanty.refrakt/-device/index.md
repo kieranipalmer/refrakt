@@ -9,7 +9,7 @@ interface [Device](index.md)
 
 | Name | Summary |
 |---|---|
-| [Light](-light/index.md) | [jvm]<br>class [Light](-light/index.md)(actor: [Actor](../../dev.shanty.refrakt.actors/-actor/index.md)&lt;[LightActorInput](../../dev.shanty.refrakt.actors/-light-actor-input/index.md), [LightActorState](../../dev.shanty.refrakt.actors/-light-actor-state/index.md)&gt;) : [Device](index.md) |
+| [Light](-light/index.md) | [jvm]<br>class [Light](-light/index.md)(actor: Actor&lt;[LightActorInput](../../dev.shanty.refrakt.actors/-light-actor-input/index.md), [LightActorState](../../dev.shanty.refrakt.actors/-light-actor-state/index.md)&gt;) : [Device](index.md) |
 
 ## Inheritors
 
