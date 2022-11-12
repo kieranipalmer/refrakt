@@ -3,4 +3,4 @@
 # Light
 
 [jvm]\
-fun [Light](-light.md)(actor: [Actor](../../../dev.shanty.refrakt.actors/-actor/index.md)&lt;[LightActorInput](../../../dev.shanty.refrakt.actors/-light-actor-input/index.md), [LightActorState](../../../dev.shanty.refrakt.actors/-light-actor-state/index.md)&gt;)
+fun [Light](-light.md)(actor: Actor&lt;[LightActorInput](../../../dev.shanty.refrakt.actors/-light-actor-input/index.md), [LightActorState](../../../dev.shanty.refrakt.actors/-light-actor-state/index.md)&gt;)
