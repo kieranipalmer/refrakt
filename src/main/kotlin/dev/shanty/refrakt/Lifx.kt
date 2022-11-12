@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 // Facade around Lifx Actor
-class Lifx(scope: CoroutineScope){
+class Lifx(scope: CoroutineScope) {
 
     private val lifxNetworkActor = scope.startLifxNetworkActor()
     private val lifxDiscoveryActor = scope.startLifxDiscoveryActor(5000, lifxNetworkActor)

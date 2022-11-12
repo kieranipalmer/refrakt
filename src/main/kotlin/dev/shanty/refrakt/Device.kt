@@ -1,6 +1,6 @@
 package dev.shanty.refrakt
 
-import dev.shanty.refrakt.actors.Actor
+import dev.shanty.akt.actor.Actor
 import dev.shanty.refrakt.actors.LightActorInput
 import dev.shanty.refrakt.actors.LightActorState
 import dev.shanty.refrakt.models.HsbkColour
