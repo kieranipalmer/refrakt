@@ -11,6 +11,10 @@ group = "dev.shanty"
 
 repositories {
     mavenCentral()
+
+    maven {
+        url = uri("https://maven.pkg.github.com/kieranipalmer/akt")
+    }
 }
 
 java {
@@ -21,7 +25,8 @@ java {
 dependencies {
     implementation("com.igormaznitsa:jbbp:2.0.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    implementation("io.github.microutils:kotlin-logging:3.0.3")
+    implementation("io.github.microutils:kotlin-logging:3.0.4")
+    implementation("dev.shanty:akt:0.0.1")
     testImplementation(kotlin("test"))
 }
 

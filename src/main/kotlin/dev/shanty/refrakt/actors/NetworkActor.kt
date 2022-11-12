@@ -3,9 +3,9 @@ package dev.shanty.refrakt.actors
 import dev.shanty.refrakt.LifxServer
 import dev.shanty.refrakt.messages.LifxCommand
 import dev.shanty.refrakt.messages.LifxEvent
-import java.net.InetAddress
+import kotlinx.coroutines.CoroutineScope
 
-internal fun ActorManager.startLifxNetworkActor() = actor<NetworkCommandEnvelope, LifxEvent> {
+internal fun CoroutineScope.startLifxNetworkActor() = actorManager.actor<NetworkCommandEnvelope, LifxEvent> {
     val lifxServer = LifxServer()
 
     onStart {
