@@ -1,4 +1,4 @@
-name: Feature Branch Checks
+name: Release
 
 on:
   release:
