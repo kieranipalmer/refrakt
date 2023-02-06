@@ -72,7 +72,6 @@ internal fun CoroutineScope.startLightActor(
         }
     }
 
-    println("Starting actor for device $lightIp")
     actor.launch {
         while (isActive) {
             networkActor.sendTo(NetworkCommandEnvelope(target = lightIp, payload = GetColour))

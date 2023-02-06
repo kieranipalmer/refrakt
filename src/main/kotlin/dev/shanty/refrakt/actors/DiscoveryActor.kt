@@ -11,16 +11,18 @@ import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 internal fun CoroutineScope.startLifxDiscoveryActor(
     discoveryTime: Long,
-    networkActor: Actor<NetworkCommandEnvelope, LifxEvent>
+    networkActor: Actor<NetworkCommandEnvelope, LifxEvent>,
+    logger: Logger = LoggerFactory.getLogger("LifxDiscoveryActor")
 ): Actor<Unit, LifxEvent.StateService> {
 
     val knownDevices = mutableSetOf<LifxEvent.StateService>()
     val actor = actor<Unit, LifxEvent.StateService> {
-        println("Running Discovery")
-
+        logger.debug("Running Discovery")
         networkActor.sendTo(NetworkCommandEnvelope(payload = GetService))
         val discoveryResponses = networkActor.outbox.mapNotNull {
             it as? LifxEvent.StateService

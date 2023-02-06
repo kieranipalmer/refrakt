@@ -32,6 +32,7 @@ dependencies {
     implementation("io.github.microutils:kotlin-logging:3.0.4")
     api("dev.shanty:akt:0.0.2")
     testImplementation(kotlin("test"))
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 publishing {
@@ -78,4 +79,12 @@ tasks.test {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
+}
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    jvmTarget = "1.8"
+}
+val compileTestKotlin: KotlinCompile by tasks
+compileTestKotlin.kotlinOptions {
+    jvmTarget = "1.8"
 }

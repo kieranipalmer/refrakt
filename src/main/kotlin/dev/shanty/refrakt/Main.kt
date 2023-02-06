@@ -11,7 +11,6 @@ fun main() = runLocalActorSystem {
 
     lifx.discoveryEvents.onEach {
         val light = (it as Device.Light)
-        println("Discovered Light ${light.label}")
 
         launch {
             light.stateEvents.collect {
