@@ -7,7 +7,6 @@ import dev.shanty.refrakt.models.HsbkColour
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
-import java.time.Instant
 import kotlin.time.Duration
 
 sealed interface Device {
@@ -18,15 +17,8 @@ sealed interface Device {
         val stateEvents = actor.outbox.stateIn(
             actor,
             SharingStarted.Eagerly,
-            LightActorState(
-                HsbkColour(0u, 0u, 0u, 0u),
-                false,
-                "",
-                Instant.now()
-            )
+            null
         )
-
-        val label: String = stateEvents.value.label
 
         /**
          * Sets the Colour of the Light
