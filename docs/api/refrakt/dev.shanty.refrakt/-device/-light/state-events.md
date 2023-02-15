@@ -3,4 +3,4 @@
 # stateEvents
 
 [jvm]\
-val [stateEvents](state-events.md): StateFlow&lt;[LightActorState](../../../dev.shanty.refrakt.actors/-light-actor-state/index.md)&gt;
+val [stateEvents](state-events.md): StateFlow&lt;[LightActorState](../../../dev.shanty.refrakt.actors/-light-actor-state/index.md)?&gt;

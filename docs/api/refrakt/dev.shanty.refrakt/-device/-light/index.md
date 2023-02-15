@@ -22,5 +22,4 @@ class [Light](index.md)(actor: Actor&lt;[LightActorInput](../../../dev.shanty.re
 
 | Name | Summary |
 |---|---|
-| [label](label.md) | [jvm]<br>val [label](label.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
-| [stateEvents](state-events.md) | [jvm]<br>val [stateEvents](state-events.md): StateFlow&lt;[LightActorState](../../../dev.shanty.refrakt.actors/-light-actor-state/index.md)&gt; |
+| [stateEvents](state-events.md) | [jvm]<br>val [stateEvents](state-events.md): StateFlow&lt;[LightActorState](../../../dev.shanty.refrakt.actors/-light-actor-state/index.md)?&gt; |

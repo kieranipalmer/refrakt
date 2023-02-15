@@ -102,7 +102,6 @@ $dokka.location:dev.shanty.refrakt//toHexString/kotlin.ByteArray#kotlin.String?/
 $dokka.location:dev.shanty.refrakt//toHexString/kotlin.UByteArray#/PointingToDeclaration/refrakt/dev.shanty.refrakt/to-hex-string.md
 $dokka.location:dev.shanty.refrakt/Device.Light///PointingToDeclaration/refrakt/dev.shanty.refrakt/-device/-light/index.md
 $dokka.location:dev.shanty.refrakt/Device.Light/Light/#dev.shanty.akt.actor.Actor[dev.shanty.refrakt.actors.LightActorInput,dev.shanty.refrakt.actors.LightActorState]/PointingToDeclaration/refrakt/dev.shanty.refrakt/-device/-light/-light.md
-$dokka.location:dev.shanty.refrakt/Device.Light/label/#/PointingToDeclaration/refrakt/dev.shanty.refrakt/-device/-light/label.md
 $dokka.location:dev.shanty.refrakt/Device.Light/setColour/#dev.shanty.refrakt.models.HsbkColour#kotlin.time.Duration#kotlin.Boolean/PointingToDeclaration/refrakt/dev.shanty.refrakt/-device/-light/set-colour.md
 $dokka.location:dev.shanty.refrakt/Device.Light/setPower/#kotlin.Boolean#kotlin.Boolean/PointingToDeclaration/refrakt/dev.shanty.refrakt/-device/-light/set-power.md
 $dokka.location:dev.shanty.refrakt/Device.Light/stateEvents/#/PointingToDeclaration/refrakt/dev.shanty.refrakt/-device/-light/state-events.md
