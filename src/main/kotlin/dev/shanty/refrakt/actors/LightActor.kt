@@ -9,10 +9,13 @@ import dev.shanty.refrakt.messages.SetPower
 import dev.shanty.refrakt.models.HsbkColour
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import org.slf4j.LoggerFactory
 import java.net.InetAddress
 import java.time.Instant
 import kotlin.time.Duration
@@ -21,6 +24,8 @@ internal fun CoroutineScope.startLightActor(
     lightIp: InetAddress,
     networkActor: Actor<NetworkCommandEnvelope, LifxEvent>
 ): Actor<LightActorInput, LightActorState> {
+
+    val logger = LoggerFactory.getLogger("Light: ${lightIp.hostAddress}")
 
     var state = LightActorState(
         HsbkColour(0u, 0u, 0u, 0u),
@@ -33,6 +38,7 @@ internal fun CoroutineScope.startLightActor(
         lightIp.toString(),
     ) {
         suspend fun processEvent(event: LifxEvent) {
+            logger.debug("Received Event: $event")
             val currentState = state
             when (event) {
                 is LifxEvent.Acknowledgement -> {}
@@ -80,7 +86,12 @@ internal fun CoroutineScope.startLightActor(
     }
 
     actor.launch {
-        networkActor.outbox.filter { it.source == lightIp }.map { LightActorInput.Event(it) }
+        networkActor.outbox
+            .filter { it.source == lightIp }
+            .map { LightActorInput.Event(it) }
+            .onEach {
+                actor.sendTo(it)
+            }.collect()
     }
 
     return actor

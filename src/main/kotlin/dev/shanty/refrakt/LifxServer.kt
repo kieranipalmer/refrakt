@@ -45,6 +45,8 @@ class LifxServer {
             udpListeningSocket.receive(receivedPacket)
             val event = receivedPacket.decodeLifxMessage()
             if (event != null) {
+                logger.debug { "Received $event" }
+                println(event)
                 emit(event)
             }
         }

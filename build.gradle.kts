@@ -10,6 +10,8 @@ plugins {
 group = "dev.shanty"
 
 repositories {
+    mavenLocal()
+
     maven {
         url = uri("https://maven.pkg.github.com/kieranipalmer/akt")
         credentials {
@@ -30,7 +32,7 @@ dependencies {
     implementation("com.igormaznitsa:jbbp:2.0.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation("io.github.microutils:kotlin-logging:3.0.4")
-    api("dev.shanty:akt:0.0.2")
+    api("dev.shanty:akt:0.0.3")
     testImplementation(kotlin("test"))
     implementation(kotlin("stdlib-jdk8"))
 }
